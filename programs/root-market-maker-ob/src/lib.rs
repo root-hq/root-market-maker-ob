@@ -6,15 +6,13 @@ pub mod instructions;
 pub mod state;
 pub mod utils;
 
-use crate::utils::OrderParams;
 use instructions::*;
+use openbook_v2::PlaceOrderArgs;
 
 declare_id!("Bf7X9xMm4MNDpg8CjRvRwuyAabZPdQtDFH2kLPTPNuur");
 
 #[program]
 pub mod root_market_maker {
-
-    use crate::utils::OrderParams;
 
     use super::*;
 
@@ -44,14 +42,14 @@ pub mod root_market_maker {
 
     pub fn refresh_quotes_on_openbook_v2(
         ctx: Context<RefreshQuotesOnOpenbookV2>,
-        bid_order_param: OrderParams,
-        ask_order_param: OrderParams,
+        bid_order_args: PlaceOrderArgs,
+        ask_order_args: PlaceOrderArgs,
         cancel_only_mode: bool,
     ) -> Result<()> {
         instructions::refresh_quotes_on_openbook_v2(
             ctx,
-            bid_order_param,
-            ask_order_param,
+            bid_order_args,
+            ask_order_args,
             cancel_only_mode
         )
     }

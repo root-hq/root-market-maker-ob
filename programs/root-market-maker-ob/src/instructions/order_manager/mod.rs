@@ -1,3 +1,3 @@
-pub use openbook_v2::*;
+pub use openbook::*;
 
-pub mod openbook_v2;
+pub mod openbook;
